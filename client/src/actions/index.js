@@ -93,21 +93,21 @@ export function getVideojuegos(){
 
 //   21)
 export const ordenAsc = (type) => (dispatch, getState) => {
-    const filtrado = getState().videojuegosFiltrados; // me traigo el estado 
+    const filtrado = getState().cryptos; // me traigo el estado 
     let videojuegosOrden = [] // declaro array vacio
   
     // si el type que me pasan es asc_nombre
       if (type === "asc_nombre") {
         // agarro todos los juegos filtrados y los ordeno según el nombre
         videojuegosOrden = filtrado.sort((a, b) => { // sort compara 2 name, y los pone antes o despues del array
-          if (a.name > b.name) return 1;
-          if (a.name < b.name) return -1;
+          if (a.symbol > b.symbol) return 1;
+          if (a.symbol < b.symbol) return -1;
           return 0;
         });
         // si el type es asc rating
       } else if (type === "asc_rating") { // sort compara 2 rating, y los pone antes o despues del array
         videojuegosOrden = filtrado.sort(
-          (a, b) => a.rating - b.rating // dependiendo si es negativo o positivo el resultado, pone uno adelante y otro atrás
+          (a, b) => a.lastPrice - b.lastPrice // dependiendo si es negativo o positivo el resultado, pone uno adelante y otro atrás
         );
       }
       dispatch({
@@ -121,18 +121,18 @@ export const ordenAsc = (type) => (dispatch, getState) => {
   
   
   export const ordenDesc = (type) => (dispatch, getState) => {
-    const filtrado = getState().videojuegosFiltrados;
+    const filtrado = getState().cryptos;
     let videojuegosOrden = []
       
       if (type === "desc_nombre") {
         videojuegosOrden = filtrado.sort((a, b) => { // ordenamelo, pero en el sentido contrario
-          if (a.name < b.name) return 1;
-          if (a.name > b.name) return -1;
+          if (a.symbol < b.symbol) return 1;
+          if (a.symbol > b.symbol) return -1;
           return 0;
         });
       } else if (type === "desc_rating") { 
         videojuegosOrden = filtrado.sort( // sort compara 2 rating, y los pone antes o despues del array
-          (a, b) => b.rating - a.rating
+          (a, b) => b.lastPrice - a.lastPrice
         );
       }
       dispatch({

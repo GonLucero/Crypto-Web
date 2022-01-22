@@ -47,6 +47,7 @@ export default function rootReducer(state = initialState, action) {
             videojuegosFiltrados: action.payload.videojuegosOrden, // entonces en videojuegos filtrados pongo, la info ordenada
             orden: action.payload.name, // en orden me guardo, la opcion seleccionada
           };
+          
 
           //24)
           case "BUSCAR_VIDEOJUEGOS":
@@ -76,10 +77,10 @@ export default function rootReducer(state = initialState, action) {
                         case "RESET":
                             return {
                               ...state,
-                              videojuegos: [],
+                              cryptos: [],
                               videojuegosFiltrados: [],
                               orden: "Select",
-                              filtrado: "All",
+                              // filtrado: "All",
                             }
                             case "FILTRADO_X_GENERO":
                                 return {
