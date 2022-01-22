@@ -1,11 +1,19 @@
 // 11)  Creo mi componente de ingreso
-
-import React from "react";
+import React, { useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCryptos } from "../actions/index";
 import { Link } from "react-router-dom";
 import "../EstilosCss/Inicio.css"
 
 
 export default function LandingPage() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('se ejecuta el dispatch')
+    dispatch(getCryptos());
+  }, []); 
 
   return (
     <div class="background">

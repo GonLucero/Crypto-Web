@@ -6,7 +6,7 @@
 	background-color: rgba(255, 255, 255, 0.678);
 	box-shadow: 0.2vh 0.2vh 2vh rgba(0, 0, 0, 0.313);
 	/* width: 32%; */
-	width: 30vw;
+	width: 18vw;
 	/* height: 300px; */
 	/* height: 1%; */
 	/* margin-top: 5px; */
@@ -56,9 +56,10 @@
 .img {
 	/* width: 430px; */
 	width: 100%;
+	font-size: 30;
 	/* height: 200px; */
 	height: 32vh;	
-	overflow: hidden;
+	/* overflow: hidden; */
 	border-radius: 1.2vh 1.2vh 0px 0px;
 }
 

@@ -14,6 +14,25 @@ import axios from 'axios';
 //         });
 //     };
 //   }
+
+// Importo todas las monedas
+export function getCryptos(){
+  return async function(dispatch){
+    try{
+      var json = await axios.get("https://api2.binance.com/api/v3/ticker/24hr")
+      const cryptos =json.data.slice(0,300)
+      console.log('cryptos',cryptos)
+      return dispatch({
+        type:  "GET_CRYPTOS",        
+        payload: cryptos
+      })
+    }catch(err){
+      console.log(err)
+    }
+  }
+}
+
+
 export function getVideojuegos(){
   return async function(dispatch){
     try{

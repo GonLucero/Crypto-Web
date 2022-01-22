@@ -8,6 +8,7 @@ const initialState = { //hago un estado inicial
   buscarVideojuego: [],
   crearVideojuego: null,  
   buscarVideojuegoXNombre: [],
+  cryptos:[],
   
 };
 
@@ -20,6 +21,13 @@ export default function rootReducer(state = initialState, action) {
           // acá le digo que en mi estado videojuegos, que inicialmente es un estado vacio:
           // se mandá todo lo que te mande la accion 
           videojuegos: action.payload,
+        }
+        case "GET_CRYPTOS": // igual que el get de las actions
+        return {
+          ...state,// copio el estado anterior, para no modificarlo
+          // acá le digo que en mi estado CRYPTOS, que inicialmente es un estado vacio:
+          // se mandá todo lo que te mande la accion 
+          cryptos: action.payload,
         }
         //19)
         case "ORDEN_X_CREADO":
