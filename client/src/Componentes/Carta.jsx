@@ -4,10 +4,18 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../EstilosCss/Carta.css';
 
+
 function Card({data}) { // acá recibo ya la info mapeada de todos los videogamea mostrar
 	console.log('aca llega data', data)
+	var isbackgroundRed = true	
+	if(data.priceChangePercent >= 0){
+	isbackgroundRed = false
+	}else{
+		isbackgroundRed = true
+	}
+	console.log('gola',isbackgroundRed)
 	return (
-		<div className='card'>
+		<div className='card' style={{borderColor: isbackgroundRed ? 'red' : 'green'}}>
 			{/* Acá permito que al tocar la carta, pueda entrar al detalle */}
 			{/* <Link to={`/videogames/${data.id}`}>  */}
 			{/* En el caso de no haber imagen, muestro la siguiente foto */}				
@@ -19,15 +27,17 @@ function Card({data}) { // acá recibo ya la info mapeada de todos los videogame
 			<div className='textCard'>
 				<div className='nameGenres'>
 					{/* Renderizo toda la info, que quiero mostrar: */}
-					<div className='name'>Last Price:${data.lastPrice}</div>
-					<div className='genres'>Volume:{data.volume}</div>
-					<div className=''>PriceChange:{data.priceChange}</div>
+					<div className='name'>{parseFloat(data.lastPrice).toFixed(5)}</div>
+					<div className='genres'>Open 24H:{parseFloat(data.openPrice).toFixed(6)}</div>
+					<div className='genres'>High 24H:{parseFloat(data.highPrice).toFixed(6)}</div>
+					<div className='genres'>Low 24H:{parseFloat(data.lowPrice).toFixed(6)}</div>
+					{/* <div className=''>PriceChange:{data.priceChange}</div> */}
 					{/* <div className='%'></div> */}
 				</div>
 				
 			</div>
-			<div className='divRating'>
-					<div className='rating'>{data.priceChangePercent}%</div>
+			<div className='divRating' style={{backgroundColor: isbackgroundRed? 'red': 'green'}}>
+					<div  className='rating'>DAY:{data.priceChangePercent}%</div>
 				</div>
 		</div>
 	);

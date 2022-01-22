@@ -32,6 +32,36 @@ export function getCryptos(){
   }
 }
 
+// QUE ME TRAE LA MONEDA?
+
+// {
+//  X"symbol": "ETHBTC",   ----> SIMBOLO DE LA MONEDA
+//   "priceChange": "-0.00452900", -----> CAMBIO DEL PRECIO DURANTE LAS ULTIMAS 24 HS
+//  X"priceChangePercent": "-6.195", ---> PORCENTAJE DEL CAMBIO DEL PRECIO, EN LAS ULTIMAS 24 HS
+//   "weightedAvgPrice": "0.07018839",----> PRECIO PROMEDIO PONDERADO = RELACION ENTRE VALOR Y VOLUMEN
+//   "prevClosePrice": "0.07311300", ---> PRECIO DE CIERRE ANTERIOR
+//  X"lastPrice": "0.06858400",---> ULTIMO PRECIO
+//   "lastQty": "0.04460000",
+//   "bidPrice": "0.06858800",---> PRECIO DE OFERTA--Bid es el precio más alto que el comprador está dispuesto a pagar
+//   "bidQty": "0.31870000",---> CANTIDAD DE OFERTA,   la cantidad que el comprador está ofertando para comprar
+//   "askPrice": "0.06858900",---->PRECIO DE VENTA--el precio más bajo al que el vendedor está dispuesto a vender
+//   "askQty": "0.24750000",-----> CANTIDAD DE DEMANDA--> 
+//  X"openPrice": "0.07311300",---> PRECIO DE APERTURA HACE 24 HS
+//  X"highPrice": "0.07336300",---> PRECIO MAS ALTO DURANTE LAS ULTIMAS 24HS
+//  X"lowPrice": "0.06760000",----> PRECIO MAS BAJO DURANTE LAS ULTIMAS 24 HS
+//   "volume": "173068.90780000",----> VOLUMEN TOTAL DURANTE LAS ULTIMAS 24 HS
+//   "quoteVolume": "12147.42857589",
+//   "openTime": 1642779616266,-->tiempo de apertura
+//   "closeTime": 1642866016266,-->tiempo de cierre, diferencia son 24 hs
+//   "firstId": 320737343,--> CANTIDAD DE TRANSACCIONES HACE 24 HORAS
+//   "lastId": 321096672,---> CANTIDAD DE TRANSACCIONES ACTUALES
+//   "count": 359330-----> NUMERO DE TRANSACCIONES DURANTE LAS ULTIMAS 24 HS
+//   },
+
+// DIFERENCIA ENTRE BIDPRICE Y ASKPRICE , SE LLAMA DIFERENCIA O MARGE DE COMPRAVENTA--> SPREAD
+//La cantidad total de oferta es el número total de acciones que tienen órdenes de compra pendientes. 
+//La cantidad total solicitada o cantidad total ofertada es el número total de acciones pendientes de vender. 
+//Verá que el precio de oferta siempre será más bajo que el precio de venta. Una vez que el precio de oferta y demanda coincida, se ejecuta la orden y esta cantidad se eliminará de la cantidad total de oferta y demanda.
 
 export function getVideojuegos(){
   return async function(dispatch){
