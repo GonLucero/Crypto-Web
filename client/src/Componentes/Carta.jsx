@@ -27,7 +27,7 @@ function Card({data}) { // acá recibo ya la info mapeada de todos los videogame
 			<div className='textCard'>
 				<div className='nameGenres'>
 					{/* Renderizo toda la info, que quiero mostrar: */}
-					<div className='name'>{parseFloat(data.lastPrice).toFixed(5)}</div>
+					<div className='name'>{parseFloat(data.lastPrice)}</div>
 					<div className='genres'>Open 24H:{parseFloat(data.openPrice).toFixed(4)}</div>
 					<div className='genres'>High 24H:{parseFloat(data.highPrice).toFixed(4)}</div>
 					<div className='genres'>Low 24H:{parseFloat(data.lowPrice).toFixed(4)}</div>

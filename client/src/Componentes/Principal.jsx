@@ -15,7 +15,8 @@ export default function Home() {
   const videojuegosFiltrados = useSelector((state) => state.videojuegosFiltrados);
   // const filtrado = useSelector((state) => state.filtrado);
   const orden = useSelector((state) => state.orden);
-  const cryptos = useSelector((state) => state.cryptos);
+  const cryptos = useSelector((state) => state.cryptosok);
+  // const cryptosok = useSelector((state) => state.cryptosok);
 
   //apenas inicie me traigo todos los juegos y reseteo los filtros/ordenamientos y los videojuegos 
   useEffect(() => {

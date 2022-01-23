@@ -1,5 +1,6 @@
 // ACA hago la conexion entre el front y el back
 import axios from 'axios';
+import Search from './../Componentes/BarradeBusqueda';
 
 // 12)
 // el componente Principal: va a hacer un get para todos los videojuegos:
@@ -20,11 +21,18 @@ export function getCryptos(){
   return async function(dispatch){
     try{
       var json = await axios.get("https://api2.binance.com/api/v3/ticker/24hr")
-      const cryptos =json.data.slice(0,300)
+      const cryptos =json.data
+      const cryptosok = cryptos.filter((f) => f.lastPrice != "0.00000000")
+      const usdt = cryptosok.filter((f)=> f.symbol.lastIndexOf('USDT')> 2)
+      const btc = cryptosok.filter((f) => f.symbol.lastIndexOf('BTC') > 2)
+      const eth = cryptosok.filter((f) => f.symbol.lastIndexOf('ETH') > 2)
+      const bnb = cryptosok.filter((f) => f.symbol.lastIndexOf('BNB') > 2)
+      // const usd = cryptosok.filter((f) => f.symbol.lastIndexOf('USD') > 2)
       console.log('cryptos',cryptos)
       return dispatch({
         type:  "GET_CRYPTOS",        
-        payload: cryptos
+        payload: cryptos,
+        name: usdt
       })
     }catch(err){
       console.log(err)
@@ -93,7 +101,7 @@ export function getVideojuegos(){
 
 //   21)
 export const ordenAsc = (type) => (dispatch, getState) => {
-    const filtrado = getState().cryptos; // me traigo el estado 
+    const filtrado = getState().cryptosok; // me traigo el estado 
     let videojuegosOrden = [] // declaro array vacio
   
     // si el type que me pasan es asc_nombre
@@ -121,7 +129,7 @@ export const ordenAsc = (type) => (dispatch, getState) => {
   
   
   export const ordenDesc = (type) => (dispatch, getState) => {
-    const filtrado = getState().cryptos;
+    const filtrado = getState().cryptosok;
     let videojuegosOrden = []
       
       if (type === "desc_nombre") {
