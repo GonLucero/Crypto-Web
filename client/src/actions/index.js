@@ -20,19 +20,27 @@ import Search from './../Componentes/BarradeBusqueda';
 export function getCryptos(){
   return async function(dispatch){
     try{
-      var json = await axios.get("https://api2.binance.com/api/v3/ticker/24hr")
-      const cryptos =json.data
-      const cryptosok = cryptos.filter((f) => f.lastPrice != "0.00000000")
-      const usdt = cryptosok.filter((f)=> f.symbol.lastIndexOf('USDT')> 2)
+      var json = await axios.get("https://api2.binance.com/api/v3/ticker/24hr") // LLAMO A LA API
+      const cryptos =json.data //ME TRAIGO TODAS LAS MONEDAS
+      
+      // ME QUEDO SOLAMENTE CON LAS CRYPTOS QUE TIENEN UN PRECIO DISTINTO DE 0
+      const cryptosok = cryptos.filter((f) => f.lastPrice != "0.00000000") 
+
+      // FILTRO SOLO LOS QUE ESTAN EN USDT
+      const usdt = cryptosok.filter((f)=> f.symbol.lastIndexOf('USDT')> 2  )
+        // ACA BUSCO LA MANERA DE LIMPIAR Y QUEDARME SOLO CON USD
+      const usd = cryptosok.filter((f)=> f.symbol.lastIndexOf('USD')> 2 )
+      const usdr = usd.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDT')> 2)
+      const usdok = usdr.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDC')> 2)
+      // usdokk son las cryptos en USD
+      const usdokk = usdok.filter((f) => f  != f.symbol.lastIndexOf('USDP')> 2)
+        // ACA ME TRAIGO LOS DEMÁS TIPOS DE CAMBIO QUE HAY
       const btc = cryptosok.filter((f) => f.symbol.lastIndexOf('BTC') > 2)
       const eth = cryptosok.filter((f) => f.symbol.lastIndexOf('ETH') > 2)
       const bnb = cryptosok.filter((f) => f.symbol.lastIndexOf('BNB') > 2)
-      // const usd = cryptosok.filter((f) => f.symbol.lastIndexOf('USD') > 2)
-      console.log('cryptos',cryptos)
       return dispatch({
         type:  "GET_CRYPTOS",        
-        payload: cryptos,
-        name: usdt
+        name: usdokk
       })
     }catch(err){
       console.log(err)
