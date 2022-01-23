@@ -1,6 +1,5 @@
 // ACA hago la conexion entre el front y el back
 import axios from 'axios';
-import Search from './../Componentes/BarradeBusqueda';
 
 // 12)
 // el componente Principal: va a hacer un get para todos los videojuegos:
@@ -80,19 +79,7 @@ export function getCryptos(){
 //La cantidad total solicitada o cantidad total ofertada es el número total de acciones pendientes de vender. 
 //Verá que el precio de oferta siempre será más bajo que el precio de venta. Una vez que el precio de oferta y demanda coincida, se ejecuta la orden y esta cantidad se eliminará de la cantidad total de oferta y demanda.
 
-export function getVideojuegos(){
-  return async function(dispatch){
-    try{
-      var json = await axios.get("http://localhost:3001/videogames")
-      return dispatch({
-        type:  "GET_VIDEOJUEGOS",
-        payload: json.data
-      })
-    }catch(err){
-      console.log(err)
-    }
-  }
-}
+
 //   20)CREO UNA ACCION PARA EL FILTRADO SEGUN DB / API O CREADO
   
   export const ordenXCreado = (source) => (dispatch, getState) => {
@@ -165,18 +152,7 @@ export const ordenAsc = (type) => (dispatch, getState) => {
       });
   }
 
-//23)
-  export function buscarVideojuegos(name) { // pongo nombre en vez de payload, nombre es lo que el usuario escriba en la barra de busqueda
-    return (dispatch) =>
-      fetch(`http://localhost:3001/videogames?name=${name}`) // le paso lo que me llega x payload
-        .then((resp) => resp.json())
-        .then((json) => {
-          return({
-            type: "BUSCAR_VIDEOJUEGOS",
-            payload: json, // json es lo que me devuelve la ruta, una vez que se le asigna el nombre
-          });
-        });
-  }
+
 
   // export function buscarVideojuegos(name) {
   //   return (dispatch)=>
@@ -193,42 +169,6 @@ export const ordenAsc = (type) => (dispatch, getState) => {
 
 
 
-  //26)
-
-
-  export function crearVideojuego(obj) {
-    return (dispatch) =>
-      fetch("http://localhost:3001/videogame", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(obj),
-      })
-        .then((resp) => resp.json())
-        .then((json) => {
-          dispatch({
-            type: "CREAR_VIDEOGAME",
-            payload: json,
-          });
-        });
-  }
-
-
-  //30)
-  export function getVideojuegoXId(id) {
-    console.log(id)
-    return (dispatch) =>
-      fetch(`http://localhost:3001/videogame/${id}`)
-        .then((resp) => resp.json())
-        .then((json) => {
-          dispatch({
-            type: "GET_VIDEOJUEGO_X_ID",
-            payload: json,
-          });
-        });
-  }
   export const search = (nombre) => (dispatch, getState) => {
     let Search = null
     console.log('se disparo', nombre)
@@ -316,51 +256,3 @@ export const ordenAsc = (type) => (dispatch, getState) => {
   };
 };
 
-// acción que me trae todos los generos
-export function getGeneros() {
-  return (dispatch) =>
-    fetch(`http://localhost:3001/genres`)
-      .then((resp) => resp.json())
-      .then((json) => {
-        dispatch({
-          type: "GET_GENEROS",
-          payload: json,
-        });
-      });
-}
-
-  // export function crearVideojuego(obj) { // el payload es lo que me llega desde el front
-  //   return (dispatch) =>
-  //     fetch("http://localhost:3001/videogame", {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(obj),
-  //     })
-  //       .then((resp) => resp.json())
-  //       .then((json) => {
-  //         dispatch({
-  //           type: "CREAR_VIDEOJUEGO",
-  //           payload: json,
-  //         });
-  //       });
-  // }
-
-
-
-    // con async:
-//   export function buscarVideojuegos(name){ // pongo nombre en vez de payload, nombre es lo que el usuario escriba en la barra de busqueda
-//     return async function (dispatch){
-//         try{
-//             var json = await axios.get("http://localhost:3001/videogames?name=" + name) // le paso lo que me llega x payload
-//             return dispatch ({
-//                 type: "BUSCAR_VIDEOJUEGOS",
-//                 payload: json // json.data es lo que me devuelve la ruta, una vez que se le asigna el nombre
-//             })
-//         } catch(error){ // mando un error si llega a fallar
-//             console.log(error)
-//         }
-//     }
-// }

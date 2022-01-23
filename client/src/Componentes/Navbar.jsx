@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../EstilosCss/Navbar.css"
 import nintendo from "../Componentes/images/nintendo.png"
-import {filtradoXGenero, search} from "../actions/index";
-import { useDispatch, useSelector } from "react-redux";
+import {search} from "../actions/index";
+import { useDispatch } from "react-redux";
 
 function NavBar() {
     const dispatch = useDispatch();
@@ -31,25 +31,20 @@ function NavBar() {
             </div>
             <div >
                 <Link to="/home">
-                    <h3 className="home">Videogames</h3>
+                    <h3 className="home">Cryptos</h3>
                 </Link>
             </div>
-            <div className="create">
-                <Link to="/create">
-                <h3>Create</h3>
-                </Link>
-            </div>
+           
             <div className="searchbar">
                 <form onSubmit={(e) => handleSubmit(e)}> 
                     <input
                     value={nombre}
                     onChange={(e) => setNombre(e.target.value)}
+                    placeholder="Search your Crypto"
                     
                     type="search"
                     ></input>
-                    {/* <NavLink to={`/results/${nombre}`}> */}
                         <button name="name" type="submit" onClick={() => buscar()}>Search</button>
-                    {/* </NavLink> */}
                 </form>
             </div>
          

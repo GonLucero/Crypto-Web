@@ -15,7 +15,7 @@ function Card({data}) { // acá recibo ya la info mapeada de todos los videogame
 	}
 	
 	return (
-		<div className='card' style={{borderColor: isbackgroundRed ? 'red' : 'green'}}>
+		<div className='card' style={{borderColor: isbackgroundRed ? 'rgb(246, 70, 93)' : 'rgb(14, 203, 129)'}}>
 			{/* Acá permito que al tocar la carta, pueda entrar al detalle */}
 			<Link to={`/videogames/${data.symbol}`}> 
 			{/* En el caso de no haber imagen, muestro la siguiente foto */}				
@@ -36,7 +36,7 @@ function Card({data}) { // acá recibo ya la info mapeada de todos los videogame
 				</div>
 				
 			</div>
-			<div className='divRating' style={{backgroundColor: isbackgroundRed? 'red': 'green'}}>
+			<div className='divRating' style={{backgroundColor: isbackgroundRed? 'rgb(246, 70, 93)' : 'rgb(14, 203, 129)'}}>
 					<div  className='rating'>DAY:{data.priceChangePercent}%</div>
 				</div>
 		</div>

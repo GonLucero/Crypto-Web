@@ -1,7 +1,7 @@
 // 18)
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getGeneros, filtradoXGenero, ordenXCreado, ordenAsc, ordenDesc } from "../actions/index";
+import { filtradoXGenero, ordenAsc, ordenDesc } from "../actions/index";
 import "../EstilosCss/Filtro.css";
 // me llega como prop una funcion paginado, que setea la numero de la pagina
 export function Filter({paginado}) {

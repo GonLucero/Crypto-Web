@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCryptos, resetTodo, ordenDesc, filtradoXGenero, ordenAsc } from "../actions/index";
+import { getCryptos, resetTodo, ordenDesc, filtradoXGenero } from "../actions/index";
 import Videojuegos from "../Componentes/Videojuegos";
 import { Paginacion } from "../Componentes/Paginado";
 import Filtro from "../Componentes/Filtro.jsx";
