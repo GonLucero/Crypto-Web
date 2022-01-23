@@ -229,6 +229,19 @@ export const ordenAsc = (type) => (dispatch, getState) => {
           });
         });
   }
+  export const search = (nombre) => (dispatch, getState) => {
+    let Search = null
+    console.log('se disparo', nombre)
+    const all = getState().cryptosok;
+    // console.log(all, 'all')
+    
+    Search = all.filter((f) => f.symbol.includes(nombre.toUpperCase()))
+     console.log('devolucion',Search)
+      dispatch({
+        type: "SEARCH_COIN",
+        payload:Search,
+      });
+  }
 
   // acá recibo el genero seleccionado
   export const filtradoXGenero = (generos) => (dispatch, getState) => {

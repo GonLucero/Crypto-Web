@@ -10,6 +10,7 @@ const initialState = { //hago un estado inicial
   buscarVideojuegoXNombre: [],
   cryptos:[],
   cryptosok:[],
+  search:[]
   
 };
 
@@ -57,6 +58,12 @@ export default function rootReducer(state = initialState, action) {
               ...state,
               buscarVideojuegoXNombre: action.payload, //en buscarvideojuegoxnombre meteme el action.payload
             };
+            case "SEARCH_COIN":
+              console.log('asd',action.payload)
+              return {
+                ...state,                
+                videojuegosFiltrados: action.payload, //en buscarvideojuegoxnombre meteme el action.payload
+              };
             //27)
             case "CREAR_VIDEOGAME":
                 return {
