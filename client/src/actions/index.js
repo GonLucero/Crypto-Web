@@ -243,6 +243,21 @@ export const ordenAsc = (type) => (dispatch, getState) => {
       });
   }
 
+  export const getCoin = (id) => (dispatch, getState) => {
+    console.log('id',id)
+    let Detail = null
+    const all = getState().cryptosok;
+    // console.log(all, 'all')
+    
+    Detail = all.filter((f) => f.symbol.includes(id.toUpperCase()))
+     console.log('devolucion',Detail)
+      dispatch({
+        type: "DETAIL_COIN",
+        payload:Detail,
+      });
+  }
+
+
   // acá recibo el genero seleccionado
   export const filtradoXGenero = (generos) => (dispatch, getState) => {
     let juegosFiltrados = null;

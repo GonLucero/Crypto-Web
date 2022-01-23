@@ -17,13 +17,13 @@ function Card({data}) { // acá recibo ya la info mapeada de todos los videogame
 	return (
 		<div className='card' style={{borderColor: isbackgroundRed ? 'red' : 'green'}}>
 			{/* Acá permito que al tocar la carta, pueda entrar al detalle */}
-			{/* <Link to={`/videogames/${data.id}`}>  */}
+			<Link to={`/videogames/${data.symbol}`}> 
 			{/* En el caso de no haber imagen, muestro la siguiente foto */}				
 
 		<a className='img' >{data.symbol}</a>
 			
 				
-			{/* </Link> */}
+			</Link>
 			<div className='textCard'>
 				<div className='nameGenres'>
 					{/* Renderizo toda la info, que quiero mostrar: */}

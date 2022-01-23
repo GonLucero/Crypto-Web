@@ -82,6 +82,11 @@ export default function rootReducer(state = initialState, action) {
                           ...state,
                           buscarVideojuegoXId: action.payload,
                         };
+                        case "DETAIL_COIN":
+                          return {
+                            ...state,
+                            buscarVideojuegoXId: action.payload,
+                          };
                         //ESTOS LOS AGREGO PERO NO SE SI LOS USO:
                         case "RESET":
                             return {

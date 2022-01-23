@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideojuegoXId } from "../actions/index";
+import { getCoin } from "../actions/index";
 import "../EstilosCss/Detalle.css";
 import NavBar from "./Navbar";
 
@@ -15,21 +15,23 @@ function GameDetail(props) {
   const {id} = useParams();
 
   useEffect(() => {
-    dispatch(getVideojuegoXId(id)); // apenas entre a la pagina, mandame la info
+    dispatch(getCoin(id)); // apenas entre a la pagina, mandame la info
   }, []); 
-
+  // console.log('llego',videojuego[0].symbol)
   return (    
     
     
     <div className="containerr">
-      {videojuego.image? // si me llego la informacion, renderizame todo
+      
+      {videojuego[0]? // si me llego la informacion, renderizame todo
+      
         <>
        <div><NavBar/></div>
       <div className="info">
       
      
         <div className="image">
-        <div className="names"><p>{videojuego.name} <p className="genress">{videojuego.genres}</p></p>
+        <div className="names"><p>{videojuego[0].symbol} <p className="genress">{videojuego[0].lastPrice}</p></p>
         
           
         <div >
@@ -40,15 +42,15 @@ function GameDetail(props) {
 
 <h5 className="sub">Released Date: {videojuego.released} |  Platforms: {videojuego.platforms}</h5>
 </div>
-<div className="imgrating">
-        {videojuego.image === null || !videojuego.image ?
+{/* <div className="imgrating">
+        {videojuego.symbol === null || !videojuego.symbol ?
               <img className = "img" src="https://www.alpha-editorial.com/images/loading.gif" alt="Link caido"/>
-              : <img className="hola" src={videojuego.image} alt={videojuego.name} /> }
+              : <img className="hola" src={videojuego.symbol} alt={videojuego.symbol} /> }
               <div className="text">
             <h2>Detail:</h2>
             <p>{videojuego.description}</p>
           </div>
-        </div>
+        </div> */}
         </div>
        
       </div>
