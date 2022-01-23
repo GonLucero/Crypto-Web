@@ -123,9 +123,11 @@ export const ordenAsc = (type) => (dispatch, getState) => {
         });
         // si el type es asc rating
       } else if (type === "asc_rating") { // sort compara 2 rating, y los pone antes o despues del array
+        
         videojuegosOrden = filtrado.sort(
           (a, b) => a.lastPrice - b.lastPrice // dependiendo si es negativo o positivo el resultado, pone uno adelante y otro atrás
         );
+        
       }
       dispatch({
         type: "ORDEN_ASC_RATING",
@@ -142,12 +144,14 @@ export const ordenAsc = (type) => (dispatch, getState) => {
     let videojuegosOrden = []
       
       if (type === "desc_nombre") {
+        
         videojuegosOrden = filtrado.sort((a, b) => { // ordenamelo, pero en el sentido contrario
           if (a.symbol < b.symbol) return 1;
           if (a.symbol > b.symbol) return -1;
           return 0;
         });
       } else if (type === "desc_rating") { 
+        console.log('llego a esta action')  
         videojuegosOrden = filtrado.sort( // sort compara 2 rating, y los pone antes o despues del array
           (a, b) => b.lastPrice - a.lastPrice
         );
@@ -251,7 +255,7 @@ export const ordenAsc = (type) => (dispatch, getState) => {
         console.log('juegos', juegosFiltrados)
     }
     if(generos === "btc"){
-      console.log('aqui estaaa')
+      console.log('aqui estaaa btc')
       juegosFiltrados = cryptosok.filter((f) => f.symbol.lastIndexOf('BTC') > 2)
     }
     if(generos === "eth"){

@@ -7,13 +7,21 @@ import "../EstilosCss/Filtro.css";
 export function Filter({paginado}) {
   const dispatch = useDispatch()
   // const generos = useSelector((store) => store.generos); // me traigo todos los generos
-
+  const filtrado = useSelector((state) => state.filtrado);
+  const orden = useSelector((state) => state.orden);
 
   // Filtrado por genero
   const handleFilter = (e) => {
     
     dispatch(filtradoXGenero(e.target.value)) // despacho la funcion fitrado x genero donde le paso( el genero seleccionado)
-    paginado(e, 1); // pongo para que me muestre la pagina 1
+    paginado(e, 1); // pongo para que me muestre la pagina 1}
+    if(orden === "desc_rating" || orden === "desc_nombre"){
+      dispatch(ordenDesc(orden))
+      console.log('aca estaaa',filtrado,orden)
+    }else if((orden === "asc_rating" || orden === "asc_nombre")){
+      dispatch(ordenAsc(orden))
+      console.log('aca estaaaaaaaa',filtrado,orden)
+    }
   };
 
 
@@ -24,9 +32,10 @@ export function Filter({paginado}) {
       dispatch(ordenAsc(e.target.value)); //
     } else if (e.target.value === "desc_nombre" || e.target.value === "desc_rating" ) {
       dispatch(ordenDesc(e.target.value)); // acá le mando la opcion elegida
-    }else {
-      dispatch(filtradoXGenero(e.target.value));
     }
+    // }else {
+    //   dispatch(filtradoXGenero(e.target.value));
+    // }
   };
 
   
@@ -47,7 +56,7 @@ export function Filter({paginado}) {
     <div className="filter">
          <div>
         <div>Exchange Rate</div>
-        <select onChange={(e) => handleFilter(e)} onChange={(e) => handleOrder(e)}>
+        <select onChange={(e) => handleFilter(e)}>
           <option value="usd" default>USD</option>
           <option value="btc" >BITCOIN</option>
           <option value="eth" >ETHEREUM</option>

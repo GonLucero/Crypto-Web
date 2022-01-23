@@ -37,7 +37,8 @@ export default function Home() {
     
    
   }, [cryptosss]); 
- 
+
+
 
   
 
