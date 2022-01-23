@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCryptos, resetTodo } from "../actions/index";
+import { getCryptos, resetTodo, ordenDesc, filtradoXGenero, ordenAsc } from "../actions/index";
 import Videojuegos from "../Componentes/Videojuegos";
 import { Paginacion } from "../Componentes/Paginado";
 import Filtro from "../Componentes/Filtro.jsx";
@@ -13,24 +13,40 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const videojuegosFiltrados = useSelector((state) => state.videojuegosFiltrados);
-  // const filtrado = useSelector((state) => state.filtrado);
+  const filtrado = useSelector((state) => state.filtrado);
   const orden = useSelector((state) => state.orden);
   const cryptos = useSelector((state) => state.cryptosok);
-  // const cryptosok = useSelector((state) => state.cryptosok);
+  const cryptosss = useSelector((state) => state.cryptos);
 
   //apenas inicie me traigo todos los juegos y reseteo los filtros/ordenamientos y los videojuegos 
   useEffect(() => {
     dispatch(resetTodo());
     dispatch(getCryptos());
+  
+    
+   
   }, []); 
+  
+  useEffect(() => {
+
+    console.log('inicio acá')
+    // dispatch(filtradoXGenero("btc"));
+    dispatch(filtradoXGenero("usd"));
+    dispatch(ordenDesc("desc_rating"));
+
+    
+   
+  }, [cryptosss]); 
+ 
+
+  
 
   // Filtrado y Ordenado
-  let todosJuegos;
-  // filtrado === "All" && orden === "Select"
+
   
-  orden === "Select"
-    ? (todosJuegos = cryptos) // muestro todos los videojuegos si no hay filtro/ordenamientos
-    : (todosJuegos = videojuegosFiltrados); // si hay, muestro los videojuegos filtrados
+  // orden === "Select"
+     let todosJuegos = videojuegosFiltrados // muestro todos los videojuegos si no hay filtro/ordenamientos
+ // si hay, muestro los videojuegos filtrados
 
   // Paginacion
   function paginado(e, num) {

@@ -8,16 +8,13 @@ export function Filter({paginado}) {
   const dispatch = useDispatch()
   // const generos = useSelector((store) => store.generos); // me traigo todos los generos
 
-  // useEffect(() => {
-  //   dispatch(getGeneros()); // apenas arrancar ejecuta la accion para traerme todos los generos
-  // }, []); 
-
 
   // Filtrado por genero
-  // const handleFilter = (e) => {
-  //   dispatch(filtradoXGenero(e.target.value)) // despacho la funcion fitrado x genero donde le paso( el genero seleccionado)
-  //   paginado(e, 1); // pongo para que me muestre la pagina 1
-  // };
+  const handleFilter = (e) => {
+    
+    dispatch(filtradoXGenero(e.target.value)) // despacho la funcion fitrado x genero donde le paso( el genero seleccionado)
+    paginado(e, 1); // pongo para que me muestre la pagina 1
+  };
 
 
   // Ordenado
@@ -25,13 +22,14 @@ export function Filter({paginado}) {
     // si lo que me llega es un ordenado de ascendente
     if (e.target.value === "asc_nombre" || e.target.value === "asc_rating") {
       dispatch(ordenAsc(e.target.value)); //
-    } else if (e.target.value === "desc_nombre" || e.target.value === "desc_rating" || e.target.value === "All") {
+    } else if (e.target.value === "desc_nombre" || e.target.value === "desc_rating" ) {
       dispatch(ordenDesc(e.target.value)); // acá le mando la opcion elegida
+    }else {
+      dispatch(filtradoXGenero(e.target.value));
     }
-    // } else {
-    //   dispatch(filtradoXGenero(e.target.value));
-    // }
   };
+
+  
 
   // Filtrado por API/DB
   // const handleCreator = (e) => {
@@ -47,15 +45,16 @@ export function Filter({paginado}) {
 
   return (
     <div className="filter">
-         {/* <div>
-        <div>Filter by Genre</div>
-        <select onChange={(e) => handleFilter(e)}>
-          <option default>All</option>
-          {generos.map((G) => (
-            <option value={G.name}>{G.name}</option>
-          ))}
+         <div>
+        <div>Exchange Rate</div>
+        <select onChange={(e) => handleFilter(e)} onChange={(e) => handleOrder(e)}>
+          <option value="usd" default>USD</option>
+          <option value="btc" >BITCOIN</option>
+          <option value="eth" >ETHEREUM</option>
+          <option value="usdt" >USDT</option>
+          <option value="bnb" >BINANCE COIN</option>
         </select>
-      </div> */}
+      </div>
       {/* <div>
         <div>Filter by Source</div>
         <select onChange={(e) => handleCreator(e)} >
@@ -67,9 +66,9 @@ export function Filter({paginado}) {
        <div>
         <div>Order</div>
         <select onChange={(e) => handleOrder(e)}>
-          <option value="All" default>All</option>
-          <option value="desc_rating">Price ⬆</option>
-          <option value="asc_rating">Price ⬇</option>
+          {/* <option value="All" default>All</option> */}
+          <option value="desc_rating" default>Last Price ⬆</option>
+          <option value="asc_rating">Last Price ⬇</option>
           <option value="asc_nombre">(A-Z)</option>
           <option value="desc_nombre">(Z-A)</option>
           

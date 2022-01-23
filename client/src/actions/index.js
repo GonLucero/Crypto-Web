@@ -26,21 +26,22 @@ export function getCryptos(){
       // ME QUEDO SOLAMENTE CON LAS CRYPTOS QUE TIENEN UN PRECIO DISTINTO DE 0
       const cryptosok = cryptos.filter((f) => f.lastPrice != "0.00000000") 
 
-      // FILTRO SOLO LOS QUE ESTAN EN USDT
-      const usdt = cryptosok.filter((f)=> f.symbol.lastIndexOf('USDT')> 2  )
-        // ACA BUSCO LA MANERA DE LIMPIAR Y QUEDARME SOLO CON USD
-      const usd = cryptosok.filter((f)=> f.symbol.lastIndexOf('USD')> 2 )
-      const usdr = usd.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDT')> 2)
-      const usdok = usdr.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDC')> 2)
-      // usdokk son las cryptos en USD
-      const usdokk = usdok.filter((f) => f  != f.symbol.lastIndexOf('USDP')> 2)
-        // ACA ME TRAIGO LOS DEMÁS TIPOS DE CAMBIO QUE HAY
-      const btc = cryptosok.filter((f) => f.symbol.lastIndexOf('BTC') > 2)
-      const eth = cryptosok.filter((f) => f.symbol.lastIndexOf('ETH') > 2)
-      const bnb = cryptosok.filter((f) => f.symbol.lastIndexOf('BNB') > 2)
+      // // FILTRO SOLO LOS QUE ESTAN EN USDT
+      // const usdt = cryptosok.filter((f)=> f.symbol.lastIndexOf('USDT')> 2  )
+      //   // ACA BUSCO LA MANERA DE LIMPIAR Y QUEDARME SOLO CON USD
+      // const usd = cryptosok.filter((f)=> f.symbol.lastIndexOf('USD')> 2 )
+      // const usdr = usd.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDT')> 2)
+      // const usdok = usdr.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDC')> 2)
+      // // usdokk son las cryptos en USD
+      // const usdokk = usdok.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDP')> 2)
+      //   // ACA ME TRAIGO LOS DEMÁS TIPOS DE CAMBIO QUE HAY
+      // const btc = cryptosok.filter((f) => f.symbol.lastIndexOf('BTC') > 2)
+      // const eth = cryptosok.filter((f) => f.symbol.lastIndexOf('ETH') > 2)
+      // const bnb = cryptosok.filter((f) => f.symbol.lastIndexOf('BNB') > 2)
       return dispatch({
         type:  "GET_CRYPTOS",        
-        name: usdokk
+        name: cryptosok,
+        name2:cryptos
       })
     }catch(err){
       console.log(err)
@@ -109,7 +110,7 @@ export function getVideojuegos(){
 
 //   21)
 export const ordenAsc = (type) => (dispatch, getState) => {
-    const filtrado = getState().cryptosok; // me traigo el estado 
+    const filtrado = getState().videojuegosFiltrados; // me traigo el estado 
     let videojuegosOrden = [] // declaro array vacio
   
     // si el type que me pasan es asc_nombre
@@ -137,7 +138,7 @@ export const ordenAsc = (type) => (dispatch, getState) => {
   
   
   export const ordenDesc = (type) => (dispatch, getState) => {
-    const filtrado = getState().cryptosok;
+    const filtrado = getState().videojuegosFiltrados;
     let videojuegosOrden = []
       
       if (type === "desc_nombre") {
@@ -227,15 +228,44 @@ export const ordenAsc = (type) => (dispatch, getState) => {
 
   // acá recibo el genero seleccionado
   export const filtradoXGenero = (generos) => (dispatch, getState) => {
-    let juegosFiltrados = [];
+    let juegosFiltrados = null;
     // si el genero esta en all, me traigo todos los juegos y lo pongo en juegosfiltrados
-    if (generos === "All") {
-      juegosFiltrados = getState().videojuegos;
-    } else { // si esta en otra posicion que no sea all, filtrame los juegos segun el genero
-      juegosFiltrados = getState().videojuegos.filter((v) =>
-        (v.genres).includes(generos)
-      )
-    };
+    // if (generos === "All") {
+    //   juegosFiltrados = getState().videojuegos;
+    // } else { // si esta en otra posicion que no sea all, filtrame los juegos segun el genero
+    //   juegosFiltrados = getState().videojuegos.filter((v) =>
+    //     (v.genres).includes(generos)
+    //   )
+    // };
+    console.log('se ejecuta esto:',generos)
+    const cryptosok = getState().cryptosok
+    if(generos === "usd"){
+      console.log('llego acáaaa')
+     
+        // ACA BUSCO LA MANERA DE LIMPIAR Y QUEDARME SOLO CON USD
+        const usd = cryptosok.filter((f)=> f.symbol.lastIndexOf('USD')> 2 )
+        const usdr = usd.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDT')> 2)
+        const usdok = usdr.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDC')> 2)
+        // usdokk son las cryptos en USD
+        juegosFiltrados = usdok.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDP')> 2)
+        console.log('juegos', juegosFiltrados)
+    }
+    if(generos === "btc"){
+      console.log('aqui estaaa')
+      juegosFiltrados = cryptosok.filter((f) => f.symbol.lastIndexOf('BTC') > 2)
+    }
+    if(generos === "eth"){
+      console.log('aqui estaaa etc')
+      juegosFiltrados = cryptosok.filter((f) => f.symbol.lastIndexOf('ETH') > 2)
+    }
+    if(generos === "bnb"){
+      console.log('aqui estaaa bnb')
+      juegosFiltrados = cryptosok.filter((f) => f.symbol.lastIndexOf('BNB') > 2)
+    }
+    if(generos === "usdt"){
+      console.log('aqui estaaa usdt')
+    juegosFiltrados = cryptosok.filter((f)=> f.symbol.lastIndexOf('USDT')> 2  )
+  }
     dispatch({
       type: "FILTRADO_X_GENERO",
       payload: {

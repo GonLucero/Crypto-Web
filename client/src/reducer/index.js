@@ -3,8 +3,8 @@ const initialState = { //hago un estado inicial
   generos: [],
   buscarVideojuegoXId: [],
   videojuegosFiltrados: [],
-  orden: "Select",
-  filtrado: "All",
+  orden: "desc_rating",
+  filtrado: "usd",
   buscarVideojuego: [],
   crearVideojuego: null,  
   buscarVideojuegoXNombre: [],
@@ -28,7 +28,7 @@ export default function rootReducer(state = initialState, action) {
           ...state,// copio el estado anterior, para no modificarlo
           // acá le digo que en mi estado CRYPTOS, que inicialmente es un estado vacio:
           // se mandá todo lo que te mande la accion 
-          cryptos: action.payload,
+          cryptos: action.name2,
           cryptosok:action.name
         }
         //19)
@@ -79,16 +79,17 @@ export default function rootReducer(state = initialState, action) {
                         case "RESET":
                             return {
                               ...state,
-                              cryptos: [],
+                              cryptosok: [],
                               videojuegosFiltrados: [],
-                              orden: "Select",
+                              orden: "desc_rating",
+                              filtrado: "usd"
                               // filtrado: "All",
                             }
                             case "FILTRADO_X_GENERO":
                                 return {
                                   ...state,
                                   videojuegosFiltrados: action.payload.videojuegoGenero,
-                                  filtrado: action.payload.genero,
+                                  filtrado: action.payload.generos,
                                 };
               
         default:
