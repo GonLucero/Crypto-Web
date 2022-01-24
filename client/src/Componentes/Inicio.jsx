@@ -8,7 +8,7 @@ export default function LandingPage() {
 
   return (
       <div  style={{backgroundColor:'black' ,height:'0px', borderColor:'black'}}>
-      <img class="background" src={back} alt="" />
+      <img class="backk" src={back} alt="" />
 
   <div style={{backgroundColor:'black', height:'0px'}}>
         <Link to="/home">
