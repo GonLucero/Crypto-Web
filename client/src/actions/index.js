@@ -211,15 +211,12 @@ export const ordenAsc = (type) => (dispatch, getState) => {
     // };
     console.log('se ejecuta esto:',generos)
     const cryptosok = getState().cryptosok
-    if(generos === "usd"){
+    if(generos === "busd"){
       console.log('llego acáaaa')
      
-        // ACA BUSCO LA MANERA DE LIMPIAR Y QUEDARME SOLO CON USD
-        const usd = cryptosok.filter((f)=> f.symbol.lastIndexOf('USD')> 2 )
-        const usdr = usd.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDT')> 2)
-        const usdok = usdr.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDC')> 2)
-        // usdokk son las cryptos en USD
-        juegosFiltrados = usdok.filter((f) => f.symbol.lastIndexOf('USD')> 2 != f.symbol.lastIndexOf('USDP')> 2)
+        // ACA BUSCO LA MANERA DE LIMPIAR Y QUEDARME SOLO CON BUSD
+        const busd = cryptosok.filter((f)=> f.symbol.lastIndexOf('BUSD')> 2 )
+        juegosFiltrados = busd;
         console.log('juegos', juegosFiltrados)
     }
     if(generos === "btc"){

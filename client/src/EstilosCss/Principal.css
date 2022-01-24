@@ -13,6 +13,11 @@
 .gg2{
     width: 99vh;
 }
+.loading{
+    width: 70%;
+    height: 96vh;
+    /* background-color: black; */
+}
 .main{
     display: flex;
     flex-direction: row;

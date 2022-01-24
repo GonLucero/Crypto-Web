@@ -57,7 +57,7 @@ export function Filter({paginado}) {
          <div>
         <div style={{color:'white', fontWeight:'530'}}>Exchange Rate</div>
         <select classname='select' onChange={(e) => handleFilter(e)}>
-          <option value="usd" default>USD</option>
+          <option value="busd" default>BUSD</option>
           <option value="btc" >BITCOIN</option>
           <option value="eth" >ETHEREUM</option>
           <option value="usdt" >TETHER</option>

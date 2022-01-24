@@ -3,16 +3,20 @@
 
 .imagen:hover{
 /* margin-inline-end: 5px; */
-width: 115%;
+height: 8.4vh;
 /* height: 100px; */
+}
+.imagen{
+  width: 6vw;
+  /* margin-top: 1vh; */
 }
 .navBar {
     width: 98.6vw;
-    height: 10vh;
+    height: 9vh;
     background: rgb(180, 89, 28);
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
     /* margin-left: -110%; */
     /* text-decoration: none!important; */
     
@@ -56,37 +60,53 @@ text-decoration: none;
 .searchbar {
   display: flex;
   /* margin-left: 20px; */
+  /* margin-right: -10px; */
 }
+
 
 .searchbar input {
   /* height: 30px; */
-  height: 1vh;
+  width: 45vw;
+  height: 5.85vh;
   background-color: #111;
   color: #ffffff;
-  /* border-radius: 10px; */
-  border: 0.3vh solid grey;
+  font-size: 17px;
+  font-weight: 500;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  border-radius: 4px;
+  /* border: 0.3vh solid grey; */
   justify-content: space-between;
+  border-color: rgb(143, 131, 131);
+  border-width: 1px;
 }
 
 .searchbar form button {
   /* height: 30px; */
-  height: 4.8vh;
-  border-radius: 0.3vh;
-  border: 0.3vh solid white;
-  background-color: white;
+  height: 6.13vh;
+  font-size: 18px;
+  width: 5vw;
+  /* height: 4.8vh; */
+  border-radius: 4px;
+  border: 1.5px solid rgb(143, 131, 131);
+  background-color: #111;
   font-weight: 550;
-  color: black;
+  color: #333;
 }
 
 .searchbar input:hover {
-  cursor: pointer;
-  background-color: orange;
-  color: black;
+  cursor:text;
+  background-color: rgb(32, 32, 32);
+  /* border-color: #333; */
+  color: white;
 }
 
 .searchbar form button:hover {
   cursor: pointer;
-  text-shadow:  0 0.5vh #fff0;
-  background-color: black;
+  /* text-shadow:  0 0.5vh #fff0; */
+  /* background-color: black; */
   color: white;
+}
+.home{
+  background: none;
 }

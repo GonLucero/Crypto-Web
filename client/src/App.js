@@ -16,7 +16,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Inicio/>} />
       <Route exact path="/home" element={<Principal/>} />   
-      <Route exact path="/videogames/:id" element={<Detalle/>}/>
+      <Route exact path="/cryptos/:id" element={<Detalle/>}/>
       
     </Routes>
     </div>

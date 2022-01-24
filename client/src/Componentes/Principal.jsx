@@ -8,6 +8,7 @@ import { Paginacion } from "../Componentes/Paginado";
 import Filtro from "../Componentes/Filtro.jsx";
 import "../EstilosCss/Principal.css";
 import NavBar from "./Navbar";
+import imagen from "./images/bold-preloader.gif"
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function Home() {
 
     console.log('inicio acá')
     // dispatch(filtradoXGenero("btc"));
-    dispatch(filtradoXGenero("usd"));
+    dispatch(filtradoXGenero("busd"));
     dispatch(ordenDesc("desc_rating"));
 
     
@@ -65,6 +66,11 @@ export default function Home() {
 
   return (
     <div className="home">
+        {juegosPagActual?.length > 0 ?
+
+
+<div>
+
       <div className="gg2"><NavBar/></div>
       <div className="filtro">
       <Filtro paginado={paginado} /> 
@@ -81,7 +87,12 @@ export default function Home() {
       totalVideojuegos={todosJuegos.length}
       paginado={paginado}
     />
-   
+    </div>
+    :
+    <div>
+      <img className="loading" src={imagen} alt="Link caido"/>
+  </div>
+        }
   </div>
   );
 };
