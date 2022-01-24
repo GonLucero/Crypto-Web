@@ -55,12 +55,12 @@ export function Filter({paginado}) {
   return (
     <div className="filter">
          <div>
-        <div>Exchange Rate</div>
-        <select onChange={(e) => handleFilter(e)}>
+        <div style={{color:'white', fontWeight:'530'}}>Exchange Rate</div>
+        <select classname='select' onChange={(e) => handleFilter(e)}>
           <option value="usd" default>USD</option>
           <option value="btc" >BITCOIN</option>
           <option value="eth" >ETHEREUM</option>
-          <option value="usdt" >USDT</option>
+          <option value="usdt" >TETHER</option>
           <option value="bnb" >BINANCE COIN</option>
         </select>
       </div>
@@ -73,11 +73,11 @@ export function Filter({paginado}) {
         </select>
       </div> */}
        <div>
-        <div>Order</div>
-        <select onChange={(e) => handleOrder(e)}>
+        <div style={{color:'white', fontWeight:'530'}}>Order</div>
+        <select classname='select' onChange={(e) => handleOrder(e)}>
           {/* <option value="All" default>All</option> */}
-          <option value="desc_rating" default>Last Price ⬆</option>
-          <option value="asc_rating">Last Price ⬇</option>
+          <option value="desc_rating" default>PRICE ⬆</option>
+          <option value="asc_rating">PRICE ⬇</option>
           <option value="asc_nombre">(A-Z)</option>
           <option value="desc_nombre">(Z-A)</option>
           

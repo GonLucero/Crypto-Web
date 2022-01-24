@@ -7,39 +7,35 @@ import '../EstilosCss/Carta.css';
 
 function Card({data}) { // acá recibo ya la info mapeada de todos los videogamea mostrar
 	// console.log('aca llega data', data)
+	let flecha = 'hola';
 	var isbackgroundRed = true	
 	if(data.priceChangePercent > 0){
 	isbackgroundRed = false
+	flecha = '▲';
 	}else{
 		isbackgroundRed = true
+		flecha = '▼'
 	}
 	
 	return (
-		<div className='card' style={{borderColor: isbackgroundRed ? 'rgb(246, 70, 93)' : 'rgb(14, 203, 129)'}}>
+		<Link to={`/videogames/${data.symbol}`} style={{textDecoration:'none'}}> 
+		{/* <div className='card' style={{backgroundColor:'black', borderColor: isbackgroundRed ? 'rgb(246, 70, 93)' : 'rgb(14, 203, 129)'}}> */}
 			{/* Acá permito que al tocar la carta, pueda entrar al detalle */}
-			<Link to={`/videogames/${data.symbol}`}> 
-			{/* En el caso de no haber imagen, muestro la siguiente foto */}				
-
-		<a className='img' >{data.symbol}</a>
 			
-				
-			</Link>
-			<div className='textCard'>
-				<div className='nameGenres'>
-					{/* Renderizo toda la info, que quiero mostrar: */}
-					<div className='name'>{parseFloat(data.lastPrice)}</div>
-					<div className='genres'>Open 24H:{parseFloat(data.openPrice).toFixed(4)}</div>
-					<div className='genres'>High 24H:{parseFloat(data.highPrice).toFixed(4)}</div>
-					<div className='genres'>Low 24H:{parseFloat(data.lowPrice).toFixed(4)}</div>
-					{/* <div className=''>PriceChange:{data.priceChange}</div> */}
-					{/* <div className='%'></div> */}
-				</div>
-				
+			{/* En el caso de no haber imagen, muestro la siguiente foto */}				
+			<div className='card'>
+	
+						<b style={{color:'white', fontSize:'20px'}}>{data.symbol} </b>
+						<b style={{color:'white',fontSize:'20px'}}>$ {parseFloat(data.lastPrice).toFixed(4)}</b>
+						<b style={{color:isbackgroundRed ? '#ea3943' : '#16c784'}}>{flecha}                                 {data.priceChangePercent}%</b>
+
+						<b>High 24h:                              {'$'+parseFloat(data.highPrice).toFixed(4)}</b>
+						<b>Low 24h:                               {'$'+parseFloat(data.lowPrice).toFixed(4)}</b>
+					<b>Open 24h:                              {'$'+parseFloat(data.openPrice).toFixed(4)}</b>
 			</div>
-			<div className='divRating' style={{backgroundColor: isbackgroundRed? 'rgb(246, 70, 93)' : 'rgb(14, 203, 129)'}}>
-					<div  className='rating'>DAY:{data.priceChangePercent}%</div>
-				</div>
-		</div>
+			
+		{/* </div> */}
+		</Link>
 	);
 }
 

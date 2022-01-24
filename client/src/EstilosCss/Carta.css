@@ -2,23 +2,30 @@
 
 .card {
 	border: 0.1vw solid rgba(255, 255, 255, 0.489);
-	border-radius: 2vh;
-	background-color: rgba(255, 255, 255, 0.678);
-	box-shadow: 0.2vh 0.2vh 2vh rgba(0, 0, 0, 0.313);
+	/* border-radius: 2vh; */
+	/* box-shadow: 0.2vh 0.2vh 2vh rgba(0, 0, 0, 0.313); */
 	/* width: 32%; */
-	width: 18%;
+	width: 98.5vw;
 	/* height: 300px; */
 	/* height: 1%; */
 	/* margin-top: 5px; */
-	margin-top: 1%;
+	margin-top: 0.5%;
+	/* margin-left: 0.%; */
 	/* margin-bottom: 5px; */
-	margin-bottom: 0.4%;
+	/* margin-bottom: 0.4%; */
 	display: flex;
-	flex-direction: column;
-	height: 45vh;	
-	justify-content: space-between;
-	border-width: 3px;
+	flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+	height: 12vh;	
+	border-width: 1px;
 	/* border-color: green; */
+	text-decoration: none;
+	color: #999;
+	/* text-decoration-color: black; */
+	background-color: #000;
+	font-weight: 600;
+	
 }
 
 .gral {
@@ -132,7 +139,7 @@ text-transform: uppercase;
 .card:hover{
 	border-color: rgb(209, 136, 0);
 	/* border-width: 3px; */
-	border-width: 0.7vh;
+	/* border-width: 0.7vh; */
 }
 
 .juegos{

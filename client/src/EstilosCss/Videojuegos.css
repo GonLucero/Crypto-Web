@@ -1,13 +1,14 @@
 .showing{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content:space-evenly;
-    width: 99%;
+    width: 98.7vw;
     align-items: flex-end;
+    flex-direction: column;
     
 }
 
 .loading{
     /* width: 500px; */
-    width: 300vw;
+    width: 99vw;
 }

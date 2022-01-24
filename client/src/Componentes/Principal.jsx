@@ -66,7 +66,7 @@ export default function Home() {
   return (
     <div className="home">
       <div className="gg2"><NavBar/></div>
-      <div>
+      <div className="filtro">
       <Filtro paginado={paginado} /> 
       </div>
       <Paginacion
@@ -75,7 +75,6 @@ export default function Home() {
       paginado={paginado}
     />
     
-  
     <div>  <Videojuegos cryptos={juegosPagActual} /></div>
     <Paginacion
       videojuegosXPag={videojuegosXPag}
