@@ -2,69 +2,39 @@
 
 
 .background {
-    height: 100vh;
-    background: url("https://www.wallpaperflare.com/static/729/15/643/gameboy-minimalism-yellow-video-games-wallpaper.jpg");
-    background-size: cover;
+    height: 92vh;
+    width: 100%;
+    /* background: url("https://www.wallpaperflare.com/static/729/15/643/gameboy-minimalism-yellow-video-games-wallpaper.jpg"); */
+    /* background-size: cover;
     display: flex;  
     justify-content: center;
     align-items: center;
-    margin-bottom: -3%;
+    margin-bottom: -3%; */
+}
+.button{
+  /* margin-block-start: -50vh; */
+  position: relative;
+  /* left:787px; */
+        top:-12vh;
+        width: 25vh;
+        height: 10vh;
+        border-radius: 10px;
+        font-size: 23px;
+        font-weight: 600;
+        background-color: rgb(131, 18, 33);
+        border-width: 0px;
+        color:rgb(161, 143, 179)
 }
 
-.title {
-    align-items: center;
-    align-content: center;
-    margin-bottom: 18%;
-    height: 20vh;
-    
-}
 
-.title h2 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-style: inherit;
-    font-size: 400%;
-    color: #444343;
-    margin-top: -8% ;
-    
-}
-.title h3{
-  font-family:  'MerriWeather', sans-serif;
-  color: rgb(59, 59, 59);
-  /* background-color: rgb(238, 163, 25); */
-  /* font-synthesis: weight; */
-  margin-top: 21%;
-  font-size: 95%;
-  width: 210vh;
-  text-align: end;
-}
-
-.title h3:hover{
-  color: whitesmoke;
-  /* font-size: 110%; */
-  border-color:whitesmoke ;
-  border-width: 3px;
-}
-.title button {
-  font-family: sans-serif;
-    color: white;
-    font-size: 165%;
-    border: solid 3px white;
-    border-radius:20px;
-    background:none;
-    margin-top: 9%;
-}
-
-.title button:hover {
+.button:hover {
   cursor: pointer;
   
   transform-origin: center;
-  text-shadow: 0 0 5px #fff;
-  border-color: #f53535;
+  text-shadow: 0 0 5px rgb(26, 25, 25);
+  color:rgb(49, 113, 129);
+  background: none;
+  border-width: 1px;
+  border-color:rgb(49, 113, 129);
   
 };
-
-.gon{
-  
-  margin-top: 100px;
-  
-}
