@@ -3,17 +3,17 @@
 
 .imagen:hover{
 /* margin-inline-end: 5px; */
-height: 8.4vh;
+height: 6vh;
 /* height: 100px; */
 }
 .imagen{
-  width: 6vw;
+  width: 3vw;
   /* margin-top: 1vh; */
 }
 .navBar {
     width: 98.6vw;
     height: 9vh;
-    background: rgb(180, 89, 28);
+    background: #da731a;
     display: flex;
     align-items: center;
     justify-content: space-around;

@@ -16,8 +16,10 @@ function NavBar() {
     
     function buscar (){
         if(nombre != ''){
-            dispatch(search(nombre))
-
+           
+            dispatch(search(nombre));
+            
+            console.log('llego aqiii')
         }
         
     }
@@ -38,7 +40,9 @@ function NavBar() {
                     
                     type="search"
                     ></input>
-                        <button name="name" type="submit" onClick={() => buscar()}>🔍︎</button>
+                     <Link to="/home" onClick={() => buscar()}>
+                        <button name="name" type="submit" >🔍︎</button>
+                        </Link>
                 </form>
             </div>
          
