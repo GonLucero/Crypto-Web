@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCryptos } from "../actions/index";
 import { Link } from "react-router-dom";
 import "../EstilosCss/Inicio.css"
-
+import back from "./images/wallpaper.jpg"
 
 export default function LandingPage() {
 
@@ -16,17 +16,17 @@ export default function LandingPage() {
   }, []); 
 
   return (
-    <div class="background">
-      <div class="title" >
-        <h2>Welcome!</h2>
-        <Link to="/home">
-          <button type="submit">START</button>
-        </Link>
-        
-        <h3>Developed by: Gonzalo Lucero</h3>
-            
-      </div>
+      <div  style={{backgroundColor:'black' ,height:'0px', borderColor:'black'}}>
+      <img class="background" src={back} alt="" />
       
-    </div>
+  <div style={{backgroundColor:'black', height:'0px'}}>
+        <Link to="/home">
+          <button className='button' type="submit">ENTER</button>
+        </Link>
+        </div>
+        
+        </div>
+    
+      
   );
 }
